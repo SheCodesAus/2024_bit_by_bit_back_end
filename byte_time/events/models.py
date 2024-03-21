@@ -3,14 +3,14 @@ from django.contrib.auth import get_user_model
 
 
 class Events(models.Model):
-    event_id = models.IntegerField()
+    event_id = models.IntegerField(blank=True, null=True)
     event_type= models.TextField()
     event_name = models.TextField()
-    event_start_date = models.DateTimeField()
-    event_end_date = models.DateTimeField()
+    event_start_date = models.DateField()
+    event_end_date = models.DateField()
     attendee_numbers = models.IntegerField()
     location = models.TextField()
-    event_mentors = models.IntegerField()
+    event_mentors = models.ForeignKey('EventMentors', on_delete=models.CASCADE, related_name='events', blank=True, null=True)
     is_open = models.BooleanField()
     date_created = models.DateTimeField()
 
