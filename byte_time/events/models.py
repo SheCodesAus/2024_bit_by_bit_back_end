@@ -16,7 +16,7 @@ class Events(models.Model):
 
 
 class EventMentors(models.Model):
-    eventmentor_id = models.IntegerField()
+    eventmentor_id = models.IntegerField(blank=True, null=True)
     event_id = models.ForeignKey('Events', on_delete=models.CASCADE, related_name='event_user')
     mentor_id = models.ForeignKey(
         get_user_model(),
