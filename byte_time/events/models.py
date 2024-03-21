@@ -3,25 +3,23 @@ from django.contrib.auth import get_user_model
 
 
 class Events(models.Model):
-    event_id = models.IntegerField(blank=True, null=True)
+    event_id = models.IntegerField(primary_key=True)
     event_type= models.TextField()
     event_name = models.TextField()
     event_start_date = models.DateField()
     event_end_date = models.DateField()
     attendee_numbers = models.IntegerField()
     location = models.TextField()
-    event_mentors = models.ForeignKey('EventMentors', on_delete=models.CASCADE, related_name='events', blank=True, null=True)
     is_open = models.BooleanField()
     date_created = models.DateTimeField()
 
 
 class EventMentors(models.Model):
-    eventmentor_id = models.IntegerField(blank=True, null=True)
-    event_id = models.ForeignKey('Events', on_delete=models.CASCADE, related_name='event_user')
+    eventmentor_id = models.IntegerField(primary_key=True)
+    event_id = models.ForeignKey('Events', on_delete=models.CASCADE)
     mentor_id = models.ForeignKey(
         get_user_model(),
-        on_delete=models.CASCADE,
-        related_name= 'mentored_events')
+        on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)
     event_onboarding_task = models.IntegerField(blank=True, null=True) 
     event_offboarding_task = models.IntegerField(blank=True, null=True) 
