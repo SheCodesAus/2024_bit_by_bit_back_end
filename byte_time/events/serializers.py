@@ -3,8 +3,9 @@ from .models import Events, EventMentors
 
 class EventSerializer(serializers.ModelSerializer):
     event_id = serializers.ReadOnlyField(source='id')
-    # owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    owner = serializers.ReadOnlyField(source='owner.id')
 
+    
     class Meta:
         model = Events
         fields = '__all__'
@@ -13,12 +14,13 @@ class EventSerializer(serializers.ModelSerializer):
 
 class EventMentorsSerializer(serializers.ModelSerializer):
       eventmentor_id = serializers.ReadOnlyField(source='id')
+      
       class Meta:
         model = EventMentors
         fields = '__all__'
 
 
-class EventsDetailSerializer(EventSerializer):
+class EventDetailSerializer(EventSerializer):
     mentors = EventMentorsSerializer(many=True, read_only=True)
 
     def update(self, instance, validated_data):
