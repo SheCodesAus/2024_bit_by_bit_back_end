@@ -6,6 +6,8 @@ class CustomUser(AbstractUser):
     bio = models.CharField(max_length=300)
     coding_language = models.TextField()
     contact_number = models.CharField(max_length=20, null=True)
+    slack = models.CharField(max_length=100, null=True)
+    linkedin = models.CharField(max_length=100, null=True)
     is_admin = models.BooleanField(default=False) 
     def __str__(self):
         return self.username
