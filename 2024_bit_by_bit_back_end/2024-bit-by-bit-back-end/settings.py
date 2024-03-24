@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = '2024_bit_by_bit_back_end.urls'
+ROOT_URLCONF = '2024-bit-by-bit-back-end.urls'
 
 TEMPLATES = [
     {
@@ -89,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '2024_bit_by_bit_back_end.wsgi.application'
+WSGI_APPLICATION = '2024-bit-by-bit-back-end.wsgi.application'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
