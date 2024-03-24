@@ -1,5 +1,5 @@
 """
-ASGI config for byte_time project.
+ASGI config for 2024_bit_by_bit_back_end project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'byte_time.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024_bit_by_bit_back_end.settings')
 
 application = get_asgi_application()

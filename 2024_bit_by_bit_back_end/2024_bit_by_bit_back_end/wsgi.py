@@ -1,5 +1,5 @@
 """
-WSGI config for byte_time project.
+WSGI config for 2024_bit_by_bit_back_end project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'byte_time.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024_bit_by_bit_back_end.settings')
 
 application = get_wsgi_application()
