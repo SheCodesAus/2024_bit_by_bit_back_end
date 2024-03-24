@@ -1,5 +1,5 @@
 """
-ASGI config for byte_time project.
+ASGI config for 2024-bit-by-bit-back-end project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
