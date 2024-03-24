@@ -1,8 +1,15 @@
 from rest_framework import serializers
 from .models import Events, EventMentors
 
+
+class EventMentorsSerializer(serializers.ModelSerializer):
+            
+      class Meta:
+        model = EventMentors
+        fields = '__all__'
+
+        
 class EventSerializer(serializers.ModelSerializer):
-    event_id = serializers.ReadOnlyField(source='id')
     owner = serializers.ReadOnlyField(source='owner.id')
 
     
@@ -10,14 +17,6 @@ class EventSerializer(serializers.ModelSerializer):
         model = Events
         fields = '__all__'
 
-
-
-class EventMentorsSerializer(serializers.ModelSerializer):
-      eventmentor_id = serializers.ReadOnlyField(source='id')
-      
-      class Meta:
-        model = EventMentors
-        fields = '__all__'
 
 
 class EventDetailSerializer(EventSerializer):
@@ -31,7 +30,6 @@ class EventDetailSerializer(EventSerializer):
         instance.event_end_date = validated_data.get('event_end_date', instance.event_end_date)
         instance.attendee_numbers = validated_data.get('attendee_numbers', instance.attendee_numbers)
         instance.location= validated_data.get('location', instance.location)
-        instance.event_mentors= validated_data.get('event_mentors', instance.event_mentors)
         instance.date_created = validated_data.get('date_created', instance.date_created)
         instance.is_open = validated_data.get('is_open', instance.is_open)
         instance.save()
