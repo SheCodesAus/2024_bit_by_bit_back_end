@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'byte_time.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024-bit-by-bit-back-end.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

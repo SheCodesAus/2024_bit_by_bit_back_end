@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'byte_time.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024-bit-by-bit-back-end.settings')
 
 application = get_asgi_application()

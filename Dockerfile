@@ -14,7 +14,7 @@ RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
-COPY byte_time/ /code/
+COPY 2024-bit-by-bit-back-end/ /code/
 
 ENV SECRET_KEY "I7ae2sN01LdCGgPjFMG53zT6gwQhd6lp5lTGKcpDr5H2yu9ZAA"
 RUN python manage.py collectstatic --noinput
