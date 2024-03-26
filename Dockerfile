@@ -14,11 +14,13 @@ RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
     rm -rf /root/.cache/
-COPY 2024-bit-by-bit-back-end/ /code/
+    
+COPY 2024_bit_by_bit_back_end/ /code/
 
-ENV SECRET_KEY "I7ae2sN01LdCGgPjFMG53zT6gwQhd6lp5lTGKcpDr5H2yu9ZAA"
+ENV SECRET_KEY "Eea9GjELFQAkUvDzCUefn6YSZnIoNk0xAEHgz7fVDulFumqsFb"
 RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
+
 
 EXPOSE 8000
 
