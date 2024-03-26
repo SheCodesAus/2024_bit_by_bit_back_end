@@ -1,22 +1,20 @@
-# fly.toml app configuration file generated for crowdfunding-back-end-shecodes-booktranslation on 2024-01-28T17:28:12+08:00
+# fly.toml app configuration file generated for 2024-bit-by-bit-back-end on 2024-03-26T21:50:02+08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "2024-bit-by-bit-back-end"
-primary_region = "syd"
-console_command = "/code/manage.py shell"
+app = '2024-bit-by-bit-back-end'
+primary_region = 'syd'
+console_command = '/code/manage.py shell'
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+
 [build]
 
 [env]
-  PORT = "8000"
-
-[experimental]
-  auto_rollback = true
+  PORT = '8000'
 
 [[services]]
   http_checks = []
@@ -51,3 +49,5 @@ processes = []
 [mounts]
   source = "dbvol"
   destination = "/dbvol"
+
+
