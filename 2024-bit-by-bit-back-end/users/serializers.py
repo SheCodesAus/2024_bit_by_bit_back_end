@@ -17,6 +17,7 @@ class UserProcessSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CustomUserDetailSerializer(CustomUserSerializer):
+
     # mentor = UserProcessSerializer(many=True, read_only=True)
 
     def update(self, instance, validated_data):
@@ -27,3 +28,4 @@ class CustomUserDetailSerializer(CustomUserSerializer):
         instance.timestamp = validated_data.get('timestamp', instance.timestamp)
         instance.save()
         return instance
+
