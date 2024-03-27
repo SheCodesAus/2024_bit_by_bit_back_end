@@ -16,8 +16,6 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY 2024-bit-by-bit-back-end/ /code
 
-COPY 2024_bit_by_bit_back_end/ /code/
-
 ENV SECRET_KEY "Eea9GjELFQAkUvDzCUefn6YSZnIoNk0xAEHgz7fVDulFumqsFb"
 
 RUN python manage.py collectstatic --noinput

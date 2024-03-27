@@ -1,5 +1,5 @@
 """
-WSGI config for 2024_bit_by_bit_back_end project.
+WSGI config for 2024-bit-by-bit-back-end project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
