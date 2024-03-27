@@ -1,5 +1,5 @@
 """
-ASGI config for 2024-bit-by-bit-back-end project.
+ASGI config for  project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024-bit-by-bit-back-end.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', '2024_bit_by_bit_back_end.settings')
 
 application = get_asgi_application()
