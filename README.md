@@ -5,7 +5,7 @@ This repo contains the `.gitignore` and `requirements.txt` you'll need to get st
 - clone the repo down
 - create+activate a venv
 - perform a `pip install` to install the modules listed in the `requirements.txt` file
-- run `django-admin startproject 2024-bit-by-bit-back-end` to launch a django project
+- run `django-admin startproject 2024_bit_by_bit_back_end` to launch a django project
 - make a commit
 - push to main
 

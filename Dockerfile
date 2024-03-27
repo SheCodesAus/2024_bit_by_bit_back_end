@@ -16,7 +16,10 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY 2024-bit-by-bit-back-end/ /code
 
-ENV SECRET_KEY "i2San7e0RI6LLyzmLc8G3iaoaHvfQixDZfYRideb6SJyr2JPez"
+COPY 2024_bit_by_bit_back_end/ /code/
+
+ENV SECRET_KEY "Eea9GjELFQAkUvDzCUefn6YSZnIoNk0xAEHgz7fVDulFumqsFb"
+
 RUN python manage.py collectstatic --noinput
 RUN chmod +x /code/run.sh
 
