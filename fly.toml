@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for 2024-bit-by-bit-back-end on 2024-03-26T21:50:02+08:00
+# fly.toml app configuration file generated for 2024_bit_by_bit_back_end on 2024-03-26T21:50:02+08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = '2024-bit-by-bit-back-end'
+app = '2024_bit_by_bit_back_end'
 primary_region = 'syd'
 console_command = '/code/manage.py shell'
 kill_signal = "SIGINT"
