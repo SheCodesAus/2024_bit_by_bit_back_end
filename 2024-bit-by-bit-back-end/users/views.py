@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import CustomUser, UserProcess
-from .serializers import CustomUserSerializer, UserProcessSerializer, CustomUserDetailSerializer
+from .serializers import CustomUserSerializer, UserProcessSerializer
 from rest_framework import status
 from django.http import Http404
 
@@ -35,12 +35,35 @@ class CustomUserDetail(APIView):
         serializer = CustomUserSerializer(user)
         return Response(serializer.data)
     
+    def put(self, request, pk):
+        user = self.get_object(pk)
+        serializer = CustomUserSerializer(
+            instance=user,
+            data=request.data,
+            partial=True
+    )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+    )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
+    def delete(self, request, pk):
+        user = self.get_object(pk)
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
 class UserProcessList(APIView):
 
     def get(self, request):
-        user_process = UserProcess.objects.all()
-        serializer = UserProcessSerializer(user_process, many=True)
-        return Response(serializer.data)
+        user_processes = UserProcess.objects.all()
+        serialized_data = UserProcessSerializer(user_processes, many=True).data
+        return Response(serialized_data)
     
     def post(self, request):
         # Assuming user_id is a one-to-one relationship with User
