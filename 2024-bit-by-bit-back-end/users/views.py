@@ -13,6 +13,8 @@ class UserList(APIView):
         serializer = CustomUserSerializer(events, many=True)
         return Response(serializer.data)
     
+class CreateUser(APIView):
+    
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
