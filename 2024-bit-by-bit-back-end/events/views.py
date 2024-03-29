@@ -83,6 +83,7 @@ class EventMentorDetail(APIView):
         serializer = EventMentorsSerializer(mentor)
         return Response(serializer.data)
 
+
     
         
 
