@@ -17,8 +17,13 @@ class CustomUser(AbstractUser):
 
 class UserProcess(models.Model):
     mentor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='onboarded_mentor')
-    user_onboarding_task = models.TextField(blank=True, null=True)  
-    user_offboarding_task = models.TextField(blank=True, null=True)   
+    user_onboarding_task_slack = models.BooleanField(default=False)
+    user_onboarding_task_linkedin = models.BooleanField(default=False)
+    user_onboarding_task_CodeofConduct = models.BooleanField(default=False)
+    user_onboarding_task_tshirtsent = models.BooleanField(default=False)
+    user_offboarding_task_feedbackrequested = models.BooleanField(default=False)
+    user_offboarding_task_feedbackreceived = models.BooleanField(default=False)
+    user_offboarding_task_tshirtreceived = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
