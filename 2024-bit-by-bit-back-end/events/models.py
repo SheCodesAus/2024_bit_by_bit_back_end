@@ -28,7 +28,7 @@ class EventMentors(models.Model):
     approved = models.BooleanField(default=False)
     event_onboarding_task = models.TextField(blank=True, null=True) 
     event_offboarding_task = models.TextField(blank=True, null=True) 
-    role_requested = models.BooleanField(default=False)
+    role_requested = models.TextField(default=False)
     role_assigned = models.BooleanField(blank=True, null=True)   
     is_completed = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
