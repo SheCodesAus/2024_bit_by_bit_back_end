@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
 
 
 class UserProcess(models.Model):
-    mentor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True, related_name='onboarded_mentor')
+    mentor = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='onboarded_mentor')
     user_onboarding_task_slack = models.BooleanField(default=False)
     user_onboarding_task_linkedin = models.BooleanField(default=False)
     user_onboarding_task_CodeofConduct = models.BooleanField(default=False)

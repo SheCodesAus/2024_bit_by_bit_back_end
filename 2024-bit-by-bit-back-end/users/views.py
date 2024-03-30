@@ -9,8 +9,8 @@ from django.http import Http404
 class UserList(APIView):
 
     def get(self, request):
-        events = CustomUser.objects.all()
-        serializer = CustomUserSerializer(events, many=True)
+        users = CustomUser.objects.all()
+        serializer = CustomUserSerializer(users, many=True)
         return Response(serializer.data)
     
 class CreateUser(APIView):
