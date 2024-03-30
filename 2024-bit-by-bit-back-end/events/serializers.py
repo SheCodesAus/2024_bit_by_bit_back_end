@@ -21,6 +21,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class EventDetailSerializer(EventSerializer):
     mentors = EventMentorsSerializer(many=True, read_only=True)
+    owner = serializers.ReadOnlyField(source='owner.id')
 
     def update(self, instance, validated_data):
         instance.event_type = validated_data.get('event_type', instance.event_type)
@@ -30,6 +31,7 @@ class EventDetailSerializer(EventSerializer):
         instance.attendee_numbers = validated_data.get('attendee_numbers', instance.attendee_numbers)
         instance.location = validated_data.get('location', instance.location)
         instance.is_open = validated_data.get('is_open', instance.is_open)
+        instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
         return instance
     
