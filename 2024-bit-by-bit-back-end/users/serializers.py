@@ -13,7 +13,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return CustomUser.objects.create_user(**validated_data)
     
 class UserProcessSerializer(serializers.ModelSerializer):
-    mentor = CustomUserSerializer()  
+    mentor = CustomUserSerializer(many=True, read_only=True)  
 
     class Meta:
         model = UserProcess

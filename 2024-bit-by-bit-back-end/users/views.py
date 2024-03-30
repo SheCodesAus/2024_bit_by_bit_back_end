@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import CustomUser, UserProcess
 from .serializers import CustomUserSerializer, UserProcessSerializer
-from rest_framework import status
+from rest_framework import status, permissions
 from django.http import Http404
 
 
@@ -13,6 +13,9 @@ class UserList(APIView):
         serializer = CustomUserSerializer(events, many=True)
         return Response(serializer.data)
     
+class CreateUser(APIView):
+    permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
@@ -24,7 +27,7 @@ class UserList(APIView):
         )
 
 class CustomUserDetail(APIView):
-
+    
     def get_object(self, pk):
         try:
             return CustomUser.objects.get(pk=pk)
