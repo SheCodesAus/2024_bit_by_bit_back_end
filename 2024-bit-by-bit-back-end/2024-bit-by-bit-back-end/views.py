@@ -14,5 +14,6 @@ class CustomAuthToken(ObtainAuthToken):
                 'token': token.key,
                 'user_id': user.pk,
                 'username':user.username,
-                'email':user.email
+                'email':user.email,
+                "is_admin":user.is_admin
             })
