@@ -38,13 +38,7 @@ class EventDetailSerializer(EventSerializer):
 class EventMentorsDetailSerializer(EventMentorsSerializer):
     event = EventSerializer(many=True, read_only=True)
 
-    def update(self, instance, validated_data):
-        instance.event_id  = validated_data.get('event_id ', instance.event_id)
-        instance.mentor_id  = validated_data.get('mentor_id ', instance.mentor_id )
-        instance.approved = validated_data.get('approved', instance.approved)
-        instance.event_onboarding_task = validated_data.get('event_onboarding_task', instance.event_onboarding_task)
-        instance.event_offboarding_task = validated_data.get('event_offboarding_task', instance.event_offboarding_task)
-        instance.role_requested = validated_data.get('role_requested', instance.role_requested)
-        instance.role_assigned = validated_data.get('role_assigned', instance.role_assigned)
-        instance.save()
-        return instance
+    class Meta:
+        model = EventMentors
+        fields = '__all__'
+    

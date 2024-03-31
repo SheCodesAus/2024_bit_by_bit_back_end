@@ -98,20 +98,41 @@ class EventMentorList(APIView):
         )
     
 class EventMentorDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
         try:
-            eventmentors = EventMentors.objects.get(pk=pk)
-            self.check_object_permissions(self.request, eventmentors)
-            return eventmentors
+            eventmentor = EventMentors.objects.get(pk=pk)
+            self.check_object_permissions(self.request, eventmentor)
+            return eventmentor
         except EventMentors.DoesNotExist:
             raise Http404
     
     def get(self, request, pk):
-        mentor = self.get_object(pk)
-        serializer = EventMentorsSerializer(mentor)
+        eventmentor = self.get_object(pk)
+        serializer = EventMentorsDetailSerializer(eventmentor)
         return Response(serializer.data)
+    
+    def put(self, request, pk):
+        mentor = self.get_object(pk)
+        serializer = EventMentorsDetailSerializer(
+            instance=mentor,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+    
+    def delete(self, request, pk):
+        event = self.get_object(pk)
+        event.delete()
+        return Response(status=status.HTTP_200_OK)
 
 
     
