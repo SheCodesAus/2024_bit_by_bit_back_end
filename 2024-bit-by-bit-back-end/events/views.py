@@ -2,7 +2,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Events, EventMentors
 from .serializers import EventSerializer, EventDetailSerializer, EventMentorsSerializer, EventMentorsDetailSerializer
-from rest_framework import status
 from django.http import Http404
 from rest_framework import status, permissions
 from .permissions import IsOwnerOrReadOnly
@@ -76,9 +75,17 @@ class EventDetail(APIView):
 class EventMentorList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    def get_object(self, pk):
+        try:
+            eventmentor = Events.objects.get(pk=pk)
+            self.check_object_permissions(self.request, eventmentor)
+            return eventmentor
+        except Events.DoesNotExist:
+            raise Http404
+
     def get(self, request):
-        mentors = EventMentors.objects.all()
-        serializer = EventMentorsSerializer(mentors, many=True)
+        eventmentor = EventMentors.objects.all()
+        serializer = EventMentorsSerializer(eventmentor, many=True)
         return Response(serializer.data)
     
     def post(self, request):
