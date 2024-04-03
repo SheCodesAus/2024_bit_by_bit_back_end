@@ -3,7 +3,11 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 
 class CustomUser(AbstractUser):
-    profilepic = models.ImageField(blank=True, null=True)
+
+    def upload_to(instance, filename):
+        return 'images/{filename}'.format(filename=filename)
+
+    profilepic = models.ImageField(upload_to=upload_to, blank=True, null=True)
     bio = models.CharField(max_length=300)
     coding_language = models.TextField()
     contact_number = models.CharField(max_length=20, null=True)

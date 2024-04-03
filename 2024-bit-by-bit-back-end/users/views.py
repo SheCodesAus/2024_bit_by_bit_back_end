@@ -4,6 +4,7 @@ from .models import CustomUser, UserProcess
 from .serializers import CustomUserSerializer, UserProcessSerializer
 from django.http import Http404
 from rest_framework import status, permissions
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class UserList(APIView):
@@ -32,6 +33,7 @@ class CreateUser(APIView):
     
 
 class CustomUserDetail(APIView):
+    parser_classes = (MultiPartParser, FormParser)
     
     def get_object(self, pk):
         try:
