@@ -21,13 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
 SECRET_KEY = os.environ.get(
  'DJANGO_SECRET_KEY',
  'django-insecure-1mtotm!1s4ua@t@aqi-uxi!@xjgpd)iyp4$di5g#nogll*6^bk'
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 # DEBUG = True
 DEBUG = os.environ.get(
  'DJANGO_DEBUG',
@@ -45,6 +45,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = ['https://*.fly.dev']
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 DATE_FORMAT = 'y/m/d'
 DATETIME_FORMAT = 'y/m/d H:i:s'
@@ -65,7 +67,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-AUTH_USER_MODEL = 'users.CustomUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -104,8 +105,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = '2024-bit-by-bit-back-end.wsgi.application'
-
-AUTH_USER_MODEL = 'users.CustomUser'
 
 
 # Database
@@ -154,6 +153,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
