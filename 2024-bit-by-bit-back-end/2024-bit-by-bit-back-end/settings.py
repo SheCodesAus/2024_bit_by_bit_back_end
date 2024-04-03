@@ -27,11 +27,20 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.environ.get(
-#  'DJANGO_DEBUG',
-#  'False'
-# ) != 'False'
+
+# DEBUG = True
+DEBUG = os.environ.get(
+ 'DJANGO_DEBUG',
+ 'False'
+) != 'False'
+
+# Actual directory user files go to
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
+
+# URL used to access the media
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True

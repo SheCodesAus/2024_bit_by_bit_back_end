@@ -3,6 +3,7 @@ from .models import CustomUser, UserProcess
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
+    profilepic = serializers.ImageField(required=False)
     
     class Meta:
         model = CustomUser
