@@ -2,8 +2,14 @@ from rest_framework import serializers
 from .models import CustomUser, UserProcess
 
 
+class UserProcessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProcess
+        fields = '__all__'
+
 class CustomUserSerializer(serializers.ModelSerializer):
-    
+    onboarded_mentor = UserProcessSerializer(many=True, read_only=True)
+
     class Meta:
         model = CustomUser
         fields = '__all__'
@@ -11,13 +17,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return CustomUser.objects.create_user(**validated_data)
-    
-class UserProcessSerializer(serializers.ModelSerializer):
-    mentors = CustomUserSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = UserProcess
-        fields = '__all__'
     
 class UserProcessDetailSerializer(serializers.ModelSerializer):
     mentor = UserProcessSerializer(many=True, read_only=True)
