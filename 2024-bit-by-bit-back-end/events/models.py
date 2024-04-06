@@ -37,7 +37,7 @@ class EventMentors(models.Model):
     event_offboarding_task_invoicesent = models.BooleanField(default=False)
     event_offboarding_task_feedbackreceived = models.BooleanField(default=False)
     role_requested = models.TextField()
-    role_assigned = models.BooleanField(default=False)
+    role_assigned = models.TextField(default='Unassigned')
     is_completed = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
