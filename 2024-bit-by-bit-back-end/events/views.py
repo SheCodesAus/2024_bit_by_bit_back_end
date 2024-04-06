@@ -4,7 +4,7 @@ from .models import Events, EventMentors
 from .serializers import EventSerializer, EventDetailSerializer, EventMentorsSerializer, EventMentorsDetailSerializer
 from django.http import Http404
 from rest_framework import status, permissions
-from .permissions import IsOwnerOrReadOnly
+
 
 
 
@@ -31,7 +31,7 @@ class EventList(APIView):
         )
     
 class EventDetail(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, pk):
         try:
