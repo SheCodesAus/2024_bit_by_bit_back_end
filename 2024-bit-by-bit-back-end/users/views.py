@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import CustomUser, UserProcess
-from .serializers import CustomUserSerializer, UserProcessSerializer
+from .serializers import CustomUserSerializer, UserProcessSerializer, UserProcessDetailSerializer
 from django.http import Http404
 from rest_framework import status, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -75,7 +75,7 @@ class UserProcessList(APIView):
         # Assuming user_id is a one-to-one relationship with User
         print("request", request)
         request.data['user_id'] = request.user.id
-        serializer = UserProcessSerializer(data=request.data)
+        serializer = UserProcessDetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -91,7 +91,7 @@ class UserProcessDetail(APIView):
             raise Http404
     def get(self, request, pk):
         user = self.get_object(pk)
-        serializer = UserProcessSerializer(user)
+        serializer = UserProcessDetailSerializer(user)
         return Response(serializer.data)
     
     def put(self, request, pk):
