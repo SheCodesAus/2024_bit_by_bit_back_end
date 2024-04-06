@@ -75,7 +75,7 @@ class UserProcessList(APIView):
         # Assuming user_id is a one-to-one relationship with User
         print("request", request)
         request.data['user_id'] = request.user.id
-        serializer = UserProcessDetailSerializer(data=request.data)
+        serializer = UserProcessSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
