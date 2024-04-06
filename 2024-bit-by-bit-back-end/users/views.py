@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import CustomUser, UserProcess
-from .serializers import CustomUserSerializer, UserProcessSerializer, UserProcessDetailSerializer
+from .serializers import CustomUserSerializer, CustomUserDetailSerializer, UserProcessSerializer, UserProcessDetailSerializer
 from django.http import Http404
 from rest_framework import status, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -38,12 +38,12 @@ class CustomUserDetail(APIView):
             raise Http404
     def get(self, request, pk):
         user = self.get_object(pk)
-        serializer = CustomUserSerializer(user)
+        serializer = CustomUserDetailSerializer(user)
         return Response(serializer.data)
     
     def put(self, request, pk):
         user = self.get_object(pk)
-        serializer = CustomUserSerializer(
+        serializer = CustomUserDetailSerializer(
             instance=user,
             data=request.data,
             partial=True
@@ -96,7 +96,7 @@ class UserProcessDetail(APIView):
     
     def put(self, request, pk):
         user = self.get_object(pk)
-        serializer = UserProcessSerializer(
+        serializer = UserProcessDetailSerializer(
             instance=user,
             data=request.data,
             partial=True
