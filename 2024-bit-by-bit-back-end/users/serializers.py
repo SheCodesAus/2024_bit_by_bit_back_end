@@ -3,11 +3,15 @@ from .models import CustomUser, UserProcess
 
 
 class UserProcessSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = UserProcess
         fields = '__all__'
 
 class CustomUserSerializer(serializers.ModelSerializer):
+    profilepic = serializers.ImageField(required=False)
+    onboarded_mentor = UserProcessSerializer(many=True, read_only=True)
+
     class Meta:
         model = CustomUser
         fields = '__all__'
@@ -24,6 +28,7 @@ class CustomUserDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserProcessDetailSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = UserProcess
         fields = '__all__'
