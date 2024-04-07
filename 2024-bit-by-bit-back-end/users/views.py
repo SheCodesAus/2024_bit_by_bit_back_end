@@ -29,7 +29,7 @@ class CreateUser(APIView):
         )
 
 class CustomUserDetail(APIView):
-    parser_classes = (MultiPartParser, FormParser)
+    # parser_classes = (MultiPartParser, FormParser)
     
     def get_object(self, pk):
         try:
