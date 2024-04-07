@@ -9,7 +9,7 @@ class UserProcessSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    profilepic = serializers.ImageField(required=False)
+    # profilepic = serializers.ImageField(required=False)
     onboarded_mentor = UserProcessSerializer(many=True, read_only=True)
 
     class Meta:
