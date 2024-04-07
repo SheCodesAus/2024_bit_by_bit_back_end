@@ -4,10 +4,10 @@ from django.contrib.auth import get_user_model
 
 class CustomUser(AbstractUser):
 
-    def upload_to(instance, filename):
-        return 'images/{filename}'.format(filename=filename)
+    # def upload_to(instance, filename):
+    #     return 'images/{filename}'.format(filename=filename)
 
-    profilepic = models.ImageField(upload_to=upload_to, blank=True, null=True)
+    profilepic = models.ImageField(blank=True, null=True)
     bio = models.CharField(max_length=300)
     coding_language = models.TextField()
     contact_number = models.CharField(max_length=20, null=True)
@@ -15,8 +15,8 @@ class CustomUser(AbstractUser):
     linkedin = models.CharField(max_length=100, null=True)
     is_admin = models.BooleanField(default=False)
      
-    def __str__(self):
-        return self.username
+    # def __str__(self):
+    #     return self.username
 
 
 class UserProcess(models.Model):
